@@ -17,3 +17,11 @@ services:
       POSTGRES_DB: etl_db
     ports:
       - "5432:5432"
+
+  etl:
+    build: .
+    depends_on:
+      - localstack
+      - postgres
+    environment:
+      - PYTHONUNBUFFERED=1
